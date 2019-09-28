@@ -23,14 +23,14 @@ I) mise en place d'un systeme de fichier ceph sur des machine virtuelle
 		puis en haut à gauche cliquer sur nouveaux
 		puis suivez les images
 
-	![Alt text](VirtualBox/commencement/newVM1.png)
-	![Alt text](VirtualBox/commencement/newVM2.png)
-	![Alt text](VirtualBox/commencement/newVM3.png)
+![Alt text](VirtualBox/commencement/newVM1.png)
+![Alt text](VirtualBox/commencement/newVM2.png)
+![Alt text](VirtualBox/commencement/newVM3.png)
 
 		démarrer la vm puis selectioner iso télécharger précèdement.
 
-	![Alt text](VirtualBox/commencement/newVM4.png)
+![Alt text](VirtualBox/commencement/newVM4.png)
 
-
+	
 
 

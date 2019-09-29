@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 # installation des paquets
 sudo apt-get install openssh-server

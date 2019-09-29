@@ -1,21 +1,22 @@
-##Gatien ryckebusch
+Gatien Ryckebusch 2019-2020 étudiant université de lille
+
 # PFE - Mise en oeuvre d'un système de fichier pair-à-pair sur raspberry pi4
 
+Dans cette parti nous allons suivre l'installation d'un système de fichier cepth sur des machines virtuelle.
 
-nous souhaitons mettre en place 
+quelques informations :
 
-
-I) mise en place d'un systeme de fichier ceph sur des machine virtuelle
 
 		iso de la machine hote     : ubuntu-18.04-minial
 		logiciel de virtualisation : virtualBox
-		image des vm               : iso/debian-8.11.1-i386-netinst.iso (32bits)
+		image des vm               : iso/debian-8.11.1-i386-netinst.iso  (32bits)
 
 
-1 ére étape : installation minimal de la machine hôte : 
+1 ére étape : installation minimal de la machine hôte. 
 
 		une fois installation minimal d'ubuntu 18.04 fais 
 		suivez le sript ubuntu 18.0.4_minimal.sh ou lancer-le.
+		lien : https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian/ubuntu18.04_minimal.sh
  
 
 2 ème étape : virtualBox et config des VMs

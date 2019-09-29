@@ -31,6 +31,14 @@ I) mise en place d'un systeme de fichier ceph sur des machine virtuelle
 
 ![Alt text](VirtualBox/commencement/newVM4.png)
 
+		puis installer le debian
+
+une fois installer suivez le fichier Virtual configuerer les reseaux sur la vm
+afin d'une ajouter l'accés en pont pour pouvoir relier en réseau les Vms et l'hôte
+
+![Alt text](VirtualBox/config/VirtualBox_Config_affichage.png)
+![Alt text](VirtualBox/config/VirtualBox_Config_reseaux.png)
+![Alt text](VirtualBox/config/VirtualBox_Config_system.png)
 	
 
 

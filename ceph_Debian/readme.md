@@ -14,9 +14,11 @@ quelques informations :
 
 1 ére étape : installation minimal de la machine hôte. 
 
-		une fois installation minimal d'ubuntu 18.04 fais 
-		suivez le sript ubuntu 18.0.4_minimal.sh ou lancer-le.
-		lien : https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian/ubuntu18.04_minimal.sh
+une fois installation minimal d'ubuntu 18.04 fais 
+suivez le sript ubuntu 18.0.4_minimal.sh ou lancer-le.
+
+
+lien : https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian/ubuntu18.04_minimal.sh
  
 
 2 ème étape : virtualBox et config des VMs

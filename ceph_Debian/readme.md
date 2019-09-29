@@ -14,7 +14,7 @@ quelques informations :
 
 1 ére étape : installation minimal de la machine hôte. 
 
-une fois installation minimal d'ubuntu 18.04 fais 
+<space>une fois installation minimal d'ubuntu 18.04 fais 
 suivez le sript ubuntu 18.0.4_minimal.sh ou lancer-le.
 
 

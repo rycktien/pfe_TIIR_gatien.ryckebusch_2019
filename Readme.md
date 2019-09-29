@@ -5,7 +5,7 @@
 
 Introduction :
 
-		Ceph est un système de stockage d'objets et de fichiers distribué conçu pour offrir d'excellentes performances, fiabilité et évolutivité.
+Ceph est un système de stockage d'objets et de fichiers distribué conçu pour offrir d'excellentes performances, fiabilité et évolutivité.
 
 lien : https://ceph.io
 
@@ -19,4 +19,4 @@ premier objectif : installation d'un systmème de fichier ceph sur des machine v
 
 deuxiéme objectif : migrer le système de fichier mis en place sur les MV sur les raspberry pi 4.
 
-vous pouvais retrouver la premier parti dnas le fichier ceph_Debian (https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/ceph_Debian)
+vous pouvais retrouver la premier parti dnas le fichier ceph_Debian (https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian)

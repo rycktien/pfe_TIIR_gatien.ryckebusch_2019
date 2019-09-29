@@ -68,7 +68,8 @@ Pour cela clique droit sur notre MV "debian_minima" puis clic sur cloner.
 ![Alt text](VirtualBox/clone/menu.png)  
 
 Puis lancer cette VM, récuperée sont address ip.  
-> ip a  
+> ip a
+
 Sur l'hote lancer la commande ssh  
 
 > ssh "utilisateur"@"ip":"port ssh"  

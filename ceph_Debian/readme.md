@@ -85,6 +85,6 @@ enfin connecté vous sur les deux autres machine en ssh
 *ici j'ai changer le bashrc la variable environnement PS1 pour afficher dans quel MV je me trouve *
 
 
-3) installation du system de fichier ceph
+## 3 éme étape : installation du system de fichier ceph dans les MVs
 
 

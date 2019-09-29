@@ -24,23 +24,24 @@ lancer virtualBox sur la machine Hôte
 
 > virutalBox
 
-puis en haut à gauche cliquer sur nouveaux
+puis en haut à gauche cliquer sur nouveaux  
+Nous allons appeler notre première MV "Debian_minima"  
 
 ![Alt text](VirtualBox/commencement/newVM1.png)
 ![Alt text](VirtualBox/commencement/newVM2.png)
 ![Alt text](VirtualBox/commencement/newVM3.png)
 
 
-une fois la vm créer il faut configurer le réseaux ici on relie
-nos VMs et notre hôte par un pont ici on supposera que nos machine on une ip static et qu'il reseteront brancher en permamance.  
+une fois la MV créer il faut configurer le réseaux ici on relie
+nos MVs et notre hôte par un pont ici on supposera que nos machine on une ip static et qu'il reseteront brancher en permamance.  
 
-voici ma configuration de ma VM par virtualbox
+voici ma configuration de ma MV par virtualbox
 
 ![Alt text](VirtualBox/config/VirtualBox_Config_affichage.png)  
 ![Alt text](VirtualBox/config/VirtualBox_Config_reseaux.png)  
 ![Alt text](VirtualBox/config/VirtualBox_Config_system.png)  
 	
-une fois les machines configurées démarrer la vm puis selectioner l'iso télécharger précèdement.
+une fois les machines configurées démarrer la MV puis selectioner l'iso télécharger précèdement.
 
 ![Alt text](VirtualBox/commencement/newVM4.png)  
 
@@ -50,19 +51,19 @@ une fois le debian installer connecté vous et installons quelques paquets pour 
    
 lien : https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian/VirtualBox/startDebian.sh  
 
-ou rajouter le dans votre vm et executer le   
+ou rajouter le dans votre MV et executer le   
 
-le fichier met à jour le système et install openssh pour pouvoir se connecter depuis l'hôte à la vm.  
+le fichier met à jour le système et install openssh pour pouvoir se connecter depuis l'hôte à la MV.  
 
 
 Maintemant que les paquets sont à jour et que ssh est installé.  
-nous allons utiliser cette vm comme backup est donc clôner cette dernière pour créer nos VMs qui servirons à l'installation
+nous allons utiliser cette MV comme backup est donc clôner cette dernière pour créer nos MVs qui servirons à l'installation
 d'un systeme de fichier ceph.   
 
-éteignez votre vm "debian_minima"  
+éteignez votre MV "debian_minima"  
 
-Puis créeons une deuxième VM que nous appellerons "Ceph1".  
-Pour cela clique droit sur notre VM "debian_minima" puis clic sur cloner.  
+Puis créeons une deuxième MV que nous appellerons "Ceph1".  
+Pour cela clique droit sur notre MV "debian_minima" puis clic sur cloner.  
 
 ![Alt text](VirtualBox/clone/menu.png)  
 
@@ -80,7 +81,7 @@ puis cloné 2 autres machine ceph2 et ceph3 à partir de "Debian_minima"
 enfin connecté vous sur les deux autres machine en ssh
 
 ![Alt text](VirtualBox/clone/configAllcontrol.png)  
-*ici j'ai changer le bashrc la variable environnement PS1 pour afficher dans quel vm je me trouve *
+*ici j'ai changer le bashrc la variable environnement PS1 pour afficher dans quel MV je me trouve *
 
 
 3) installation du system de fichier ceph

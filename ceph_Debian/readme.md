@@ -9,7 +9,7 @@ quelques informations :
 
 		iso de la machine hote     : ubuntu-18.04-minial
 		logiciel de virtualisation : virtualBox
-		image des vm               : iso/debian-8.11.1-i386-netinst.iso  (32bits)
+		image des vm               : debian-8.11.1-i386-netinst.iso  (32bits)
 
 
 ## 1 ére étape : installation minimal de la machine hôte. 
@@ -45,21 +45,24 @@ une fois les machines configurées démarrer la vm puis selectioner l'iso télé
 ![Alt text](VirtualBox/commencement/newVM4.png)  
 
 maintemant installer votre debian.  
-une fois le debian installer connecté vous et installons quelques paquets pour cela lancer le fichier dans   
+une fois le debian installer connecté vous et installons quelques paquets pour cela suivez le scipt 
 "VirtualBox/startDebian.sh"  
+   
+lien : https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian/VirtualBox/startDebian.sh  
 
-ou suiver les commande une à une.  
+ou rajouter le dans votre vm et executer le   
 
-le fichier met à jour le système et install openssh pour pouvoir se connecter depuis l'hôte
-à la vm.
+le fichier met à jour le système et install openssh pour pouvoir se connecter depuis l'hôte à la vm.  
 
-Maintemant que les paquets sont à jour et que ssh est installé. nous allons utiliser cette vm comme backup est donc clôner cette dernière pour créer nos VMs qui servirons à l'installation
+
+Maintemant que les paquets sont à jour et que ssh est installé.  
+nous allons utiliser cette vm comme backup est donc clôner cette dernière pour créer nos VMs qui servirons à l'installation
 d'un systeme de fichier ceph.   
 
 éteignez votre vm "debian_minima"  
-puis créeons une deuxième VM que nous appellerons "Ceph1"  
-pour cela clique droit sur notre VM "debian_minima"   
-puis clic sur cloner
+
+Puis créeons une deuxième VM que nous appellerons "Ceph1".  
+Pour cela clique droit sur notre VM "debian_minima" puis clic sur cloner.  
 
 ![Alt text](VirtualBox/clone/menu.png)  
 

@@ -11,7 +11,8 @@ Dans cette parti nous allons suivre l'installation d'un système de fichier cept
 		logiciel de virtualisation       : virtualBox
 		image des machines virtuels (MV) : debian-8.11.1-i386-netinst.iso  (32bits)
   
-Machine Virtuelle:
+Machine Virtuelle:  
+
 		Nom   |    Adress MAC     | adresse IP (fixée avec dhcp) 
 		ceph1 | 08:AA:AA:AA:AA:AA | 192.168.1.78
 		ceph1 | 08:BB:BB:BB:BB:BB | 192.168.1.79
@@ -49,10 +50,16 @@ voici ma configuration de ma MV par virtualbox
 carte Réseau ethernet puis de fixe l'adresse MACs de la MV Pour  
 pouvoir rajouter une régle dhcp et donc fixer l'adresse IP  
 en fonction des adress MAC ici j'ai fixé :  
+
+
 		ceph1 -> 08:AA:AA:AA:AA:AA
 		ceph2 -> 08:BB:BB:BB:BB:BB
 		ceph3 -> 08:CC:CC:CC:CC:CC
+
+
 et donc voici la configuration du DHCP  
+
+
 		ceph1 -> PC-241 -> 192.168.1.78
 		ceph1 -> PC-242 -> 192.168.1.79
 		ceph1 -> PC-243 -> 192.168.1.80
@@ -111,6 +118,8 @@ connecter en SSH dessus grâce au IP qui leur sont donner par
 mon server DHCP et donc je connais leur IPs.*
 
 enfin connecté vous sur MV en ssh :  
+
+
 		ceph1 : ssh <user>@192.168.1.78
 		ceph1 : ssh <user>@192.168.1.79
 		ceph1 : ssh <user>@192.168.1.80

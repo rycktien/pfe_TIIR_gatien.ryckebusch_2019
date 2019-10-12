@@ -1,0 +1,59 @@
+admin -> 192.168.0.14
+ceph3 -> 192.168.0.20
+ceph2 -> 192.168.0.19
+ceph1 -> 192.168.0.18
+
+
+#en root
+
+##############   installation de ceph
+
+### commun
+
+wget -q -O- 'https://download.ceph.com/keys/release.asc' | apt-key add -
+echo deb http://download.ceph.com/debian-jewel/ $(lsb_release -sc) main > /etc/apt/sources.list.d/ceph.list
+apt update
+apt list --upgradable -a
+sudo apt install ceph
+sudo apt install ceph-deploy
+
+
+# synchro sur le pc admin
+
+sudo apt-get install ntp
+sudo apt-get install ntpdate
+
+sudo systemctl stop ntp
+sudo ntpdate 192.168.0.14 (pc admin)
+sudo systemctl start ntp
+sudo systemctl enable ntp
+
+echo -e "#!/bin/bash\nntpdate 192.168.0.1\n"
+chmod a+x /etc/cron.hourly/ntpdate
+vim /etc/cron.hourly/ntpdate
+
+
+
+
+###############  fichier de conf obligatoire sur les serv
+
+/etc/ceph/ceph.conf
+/etc/ceph/ceph.client.admin.keyring
+/tmp/ceph.mon.keyring
+
+
+exemple de fichier conf dans ceph.conf
+
+
+
+################ clef admin generate
+ceph-authtool --create-keyring /etc/ceph/ceph.client.admin.keyring --gen-key -n client.admin --set-uid=0 --cap mon 'allow *' --cap osd 'allow *' --cap mds 'allow'
+
+################ clef commun au serv
+
+ceph-authtool --create-keyring /tmp/ceph.mon.keyring --gen-key -n mon. --cap mon "allow *"
+
+ceph-authtool /tmp/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.admin.keyring
+
+
+

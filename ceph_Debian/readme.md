@@ -4,12 +4,18 @@ Gatien Ryckebusch 2019-2020 étudiant université de lille
 
 Dans cette parti nous allons suivre l'installation d'un système de fichier cepth sur des machines virtuelle.  
 
-quelques informations :  
+##quelques informations
 
 
 		iso de la machine hote           : ubuntu-18.04-minial
 		logiciel de virtualisation       : virtualBox
 		image des machines virtuels (MV) : debian-8.11.1-i386-netinst.iso  (32bits)
+  
+Machine Virtuelle:
+		Nom   |    Adress MAC     | adresse IP (fixée avec dhcp) 
+		ceph1 | 08:AA:AA:AA:AA:AA | 192.168.1.78
+		ceph1 | 08:BB:BB:BB:BB:BB | 192.168.1.79
+		ceph1 | 08:CC:CC:CC:CC:CC | 192.168.1.80
 
 
 ## 1 ére étape : installation minimal de la machine hôte. 
@@ -33,12 +39,30 @@ Nous allons appeler notre première MV "Debian_minima"
 
 
 une fois la MV créer il faut configurer le réseaux ici on relie
-nos MVs et notre hôte par un pont ici on supposera que nos machine on une ip static et qu'il reseteront brancher en permamance.  
+notre MV et notre hôte par un pont ici on fixe juste l'adresse MAC de la MV pour que notre serveur DHCP fixe l'adresse IP en fonction de cette dernière.
 
 voici ma configuration de ma MV par virtualbox
 
-![Alt text](VirtualBox/config/VirtualBox_Config_affichage.png)  
+![Alt text](VirtualBox/config/reseau_config.png)  
+
+*pour la configuration du réseau j'ai choisi de passer par ma  
+carte Réseau ethernet puis de fixe l'adresse MACs de la MV Pour  
+pouvoir rajouter une régle dhcp et donc fixer l'adresse IP  
+en fonction des adress MAC ici j'ai fixé :  
+		ceph1 -> 08:AA:AA:AA:AA:AA
+		ceph2 -> 08:BB:BB:BB:BB:BB
+		ceph3 -> 08:CC:CC:CC:CC:CC
+et donc voici la configuration du DHCP  
+		ceph1 -> PC-241 -> 192.168.1.78
+		ceph1 -> PC-242 -> 192.168.1.79
+		ceph1 -> PC-243 -> 192.168.1.80
+
+![Alt text](VirtualBox/config/dhcp_config.png)  
+
+
 ![Alt text](VirtualBox/config/VirtualBox_Config_reseaux.png)  
+
+
 ![Alt text](VirtualBox/config/VirtualBox_Config_system.png)  
 	
 une fois les machines configurées démarrer la MV puis selectioner l'iso télécharger précèdement.
@@ -67,22 +91,37 @@ Pour cela clique droit sur notre MV "debian_minima" puis clic sur cloner.
 
 ![Alt text](VirtualBox/clone/menu.png)  
 
-Puis lancer cette VM, récuperée sont address ip.  
-> ip a
-
-Sur l'hote lancer la commande ssh  
-
-> ssh "utilisateur"@"ip":"port ssh"  
-
-puis cloné 2 autres machine ceph2 et ceph3 à partir de "Debian_minima"
+puis cloné 2 autres machine ceph2 et ceph3 à partir de "Debian_minima" et changer leur adress MAC.
 
 ![Alt text](VirtualBox/clone/VMs.png)  
+
+Avant de lancer les MVs n'oublié pas de changer les adresses MAC  
+de ces dernières pour pouvoir récuperer une adresse IP fixe via  
+le dhcp.  
+
+
+
+puis lancer les :  
+
+
 ![Alt text](VirtualBox/clone/lauch.png)  
 
-enfin connecté vous sur les deux autres machine en ssh
+*ici je l'ai lance sans interface graphique car je compte juste me  
+connecter en SSH dessus grâce au IP qui leur sont donner par  
+mon server DHCP et donc je connais leur IPs.*
+
+enfin connecté vous sur MV en ssh :  
+		ceph1 : ssh <user>@192.168.1.78
+		ceph1 : ssh <user>@192.168.1.79
+		ceph1 : ssh <user>@192.168.1.80
+		car nous avons fixer l adress ip de ceph1,ceph2,ceph3
 
 ![Alt text](VirtualBox/clone/configAllcontrol.png)  
-*ici j'ai changer le bashrc la variable environnement PS1 pour afficher dans quel MV je me trouve *
+*ici j'ai changer le bashrc, la variable environnement PS1 pour afficher dans quel MV je me trouve *  
+
+
+puis j'ai fais un test de ping.  
+![Alt text](VirtualBox/config/ceph_ping.png)
 
 
 ## 3 éme étape : installation du system de fichier ceph dans les MVs

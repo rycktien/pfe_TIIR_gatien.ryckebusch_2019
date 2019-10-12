@@ -15,8 +15,8 @@ Machine Virtuelle:
 
 		Nom   |    Adress MAC     | adresse IP (fixée avec dhcp) 
 		ceph1 | 08:AA:AA:AA:AA:AA | 192.168.1.78
-		ceph1 | 08:BB:BB:BB:BB:BB | 192.168.1.79
-		ceph1 | 08:CC:CC:CC:CC:CC | 192.168.1.80
+		ceph2 | 08:BB:BB:BB:BB:BB | 192.168.1.79
+		ceph3 | 08:CC:CC:CC:CC:CC | 192.168.1.80
 
 
 ## 1 ére étape : installation minimal de la machine hôte. 

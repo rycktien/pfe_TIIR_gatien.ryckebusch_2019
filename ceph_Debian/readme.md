@@ -46,8 +46,8 @@ voici ma configuration de ma MV par virtualbox
 
 ![Alt text](VirtualBox/config/reseau_config.png)  
 
-*pour la configuration du réseau j'ai choisi de passer par ma  
-carte Réseau ethernet puis de fixe l'adresse MACs de la MV Pour  
+Pour la configuration du réseau j'ai choisi de passer par ma  
+carte Réseau ethernet puis de fixer l'adresse MACs de la MV Pour  
 pouvoir rajouter une régle dhcp et donc fixer l'adresse IP  
 en fonction des adress MAC ici j'ai fixé :  
 
@@ -57,7 +57,7 @@ en fonction des adress MAC ici j'ai fixé :
 		ceph3 -> 08:CC:CC:CC:CC:CC
 
 
-et donc voici la configuration du DHCP  
+et donc voici la configuration du *DHCP*  
 
 
 		ceph1 -> PC-241 -> 192.168.1.78
@@ -66,45 +66,38 @@ et donc voici la configuration du DHCP
 
 ![Alt text](VirtualBox/config/dhcp_config.png)  
 
-
-![Alt text](VirtualBox/config/VirtualBox_Config_reseaux.png)  
-
-
-![Alt text](VirtualBox/config/VirtualBox_Config_system.png)  
-	
-une fois les machines configurées démarrer la MV puis selectioner l'iso télécharger précèdement.
+une fois les machines configurées démarrer la MV puis selectioner l'iso télécharger précèdement.  
 
 ![Alt text](VirtualBox/commencement/newVM4.png)  
 
 maintemant installer votre debian.  
 une fois le debian installer connecté vous et installons quelques paquets pour cela suivez le scipt 
-"VirtualBox/startDebian.sh"  
+"**VirtualBox/startDebian.sh**"  
    
 lien : https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian/VirtualBox/startDebian.sh  
 
-ou rajouter le dans votre MV et executer le   
+ou rajouter le dans votre MV et executer le.  
 
 le fichier met à jour le système et install openssh pour pouvoir se connecter depuis l'hôte à la MV.  
 
 
 Maintemant que les paquets sont à jour et que ssh est installé.  
-nous allons utiliser cette MV comme backup est donc clôner cette dernière pour créer nos MVs qui servirons à l'installation
+nous allons utiliser cette **MV comme backup** est donc clôner cette dernière pour créer nos MVs qui servirons à l'installation
 d'un systeme de fichier ceph.   
 
-éteignez votre MV "debian_minima"  
+éteignez votre MV "**debian_minima**"  
 
-Puis créeons une deuxième MV que nous appellerons "Ceph1".  
-Pour cela clique droit sur notre MV "debian_minima" puis clic sur cloner.  
+Puis créeons une deuxième MV que nous appellerons "**Ceph1**".  
+Pour cela clique droit sur notre MV "**debian_minima**" puis clic sur cloner.  
 
 ![Alt text](VirtualBox/clone/menu.png)  
 
-puis cloné 2 autres machine ceph2 et ceph3 à partir de "Debian_minima" et changer leur adress MAC.
+puis cloné 2 autres machine ceph2 et ceph3 à partir de "**Debian_minima**" et changer leur **adresses MAC**.
 
 ![Alt text](VirtualBox/clone/VMs.png)  
 
-Avant de lancer les MVs n'oublié pas de changer les adresses MAC  
-de ces dernières pour pouvoir récuperer une adresse IP fixe via  
-le dhcp.  
+Avant de lancer les MVs **n'oublié pas de changer les adresses MAC**  
+de ces dernières pour pouvoir récuperer *une adresse IP via le dhcp*.  
 
 
 
@@ -113,11 +106,11 @@ puis lancer les :
 
 ![Alt text](VirtualBox/clone/lauch.png)  
 
-*ici je l'ai lance sans interface graphique car je compte juste me  
+ici je l'ai lance *sans interface graphique* car je compte juste me  
 connecter en SSH dessus grâce au IP qui leur sont donner par  
-mon server DHCP et donc je connais leur IPs.*
+mon server DHCP et donc je connais leur IPs.
 
-enfin connecté vous sur MV en ssh :  
+enfin je me connecte vous sur mes MVs en ssh :  
 
 
 		ceph1 : ssh <user>@192.168.1.78

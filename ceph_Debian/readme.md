@@ -74,11 +74,11 @@ maintemant installer votre debian.
 une fois le debian installer connecté vous et installons quelques paquets pour cela suivez le scipt 
 "**VirtualBox/startDebian.sh**"  
    
-lien : https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian/VirtualBox/startDebian.sh  
+**lien** : https://github.com/rycktien/pfe_TIIR_gatien.ryckebusch_2019/tree/master/ceph_Debian/VirtualBox/startDebian.sh  
 
 ou rajouter le dans votre MV et executer le.  
 
-le fichier met à jour le système et install openssh pour pouvoir se connecter depuis l'hôte à la MV.  
+le fichier *met à jour le système* et *install openssh* pour pouvoir se connecter depuis l'hôte à la MV.  
 
 
 Maintemant que les paquets sont à jour et que ssh est installé.  
@@ -92,7 +92,7 @@ Pour cela clique droit sur notre MV "**debian_minima**" puis clic sur cloner.
 
 ![Alt text](VirtualBox/clone/menu.png)  
 
-puis cloné 2 autres machine ceph2 et ceph3 à partir de "**Debian_minima**" et changer leur **adresses MAC**.
+puis cloné 2 autres machine **ceph2** et **ceph3** à partir de "**Debian_minima**" et changer leur **adresses MAC**.
 
 ![Alt text](VirtualBox/clone/VMs.png)  
 

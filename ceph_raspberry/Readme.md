@@ -139,7 +139,7 @@ il faut laiser la phrase secrète vide.
 objectif :
 
 
-![Alt text](Images/)
+![ceph base](Images/ceph_health_e1.png)
 
 sur ceph-admin 
 

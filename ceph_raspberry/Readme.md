@@ -6,15 +6,14 @@ Dans cette parti nous allons nous voir l'installation du systéme de fichier cep
 
 ## Quelques informations
 
-
-		iso de la machine hote : 2019-09-26-raspbian-buster-lite.img
-		login : pi
-		password : raspberry
-		
+ip réseau : 192.168.1.0/24  
+iso de la machine hote : 2019-09-26-raspbian-buster-lite.img  
+login : pi  
+password : raspberry  
+  		 
   
-IP:  
-		ip réseau : 192.168.1.0/24
-
+IP  
+		
 		Nom         |  adresse IP
 		ceph-admin  | 192.168.1.63
 		ceph2       | 192.168.1.71

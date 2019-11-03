@@ -4,7 +4,7 @@ Gatien Ryckebusch 2019-2020 étudiant université de lille
 
 Dans cette parti nous allons nous voir l'installation du systéme de fichier ceph sur des raspberry pi 4.
 
-##quelques informations
+## Quelques informations
 
 
 		iso de la machine hote : 2019-09-26-raspbian-buster-lite.img

@@ -219,7 +219,13 @@ Allons vérifier l'état de notre cluster.
 ![ceph base](Images/ceph_health_e2.png)
 
 # Sources
-  
-https://docs.ceph.com/docs/mimic/start/quick-start-preflight/  
-https://docs.ceph.com/docs/mimic/start/quick-ceph-deploy/
+ 
+Documentation ceph :  
+	https://docs.ceph.com/docs/mimic/start/quick-start-preflight/   
+	https://docs.ceph.com/docs/mimic/start/quick-ceph-deploy/
+	
+Raspbian:  
+	https://www.raspberrypi.org/downloads/raspbian/  
+	
+
 

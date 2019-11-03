@@ -6,10 +6,10 @@ Dans cette partie nous allons voir l'installation du système de fichiers ceph s
 
 ## Quelques informations
 
-Ip du réseau : 192.168.1.0/24  
+Réseau : 192.168.1.0/24  
 Iso des raspberry pi : 2019-09-26-raspbian-buster-lite.img  
-Login : pi  
-Password : raspberry  
+Utilisateur : pi  
+Mot de passe : raspberry  
 IP :
 		
 		Nom         |  adresse IP
@@ -73,7 +73,7 @@ Création de l'utilisateur ceph-admin.
 
 > sudo useradd ceph-admin --shell /bin/bash --create-home
 
-Mise à jour du mot de pass de ceph-admin "ceph".
+Mise à jour du mot de passe de ceph-admin "ceph".
 
 > sudo passwd ceph-admin
 
@@ -92,7 +92,7 @@ Création de l'utilisateur ceph-admin.
 
 > sudo useradd ceph2 --shell /bin/bash --create-home
 
-Mise à jour du mot de pass de ceph2 "ceph".
+Mise à jour du mot de passe de ceph2 "ceph".
 
 > sudo passwd ceph2
 
@@ -110,7 +110,7 @@ Création de l'utilisateur ceph3.
 
 > sudo useradd ceph3 --shell /bin/bash --create-home
 
-Mise à jour du mot de pass de ceph3 "ceph".
+Mise à jour du mot de passe de ceph3 "ceph".
 
 > sudo passwd ceph3
 
@@ -194,7 +194,7 @@ Vérifions avec la commande "sudo ceph -s" et "sudo ceph health".
 
 ![ceph base](Images/ceph_health_e1.png)
 
-## 5 éme étape : Amélioration du système de fichiers ceph.
+## 5 ème étape : Amélioration du système de fichiers ceph.
 
 objectif :  
 

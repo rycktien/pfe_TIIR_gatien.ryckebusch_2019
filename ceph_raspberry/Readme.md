@@ -29,7 +29,10 @@ Avant-propos:
         /dev/mmcblk0p3      210247680 315105279 104857600   50G 83 Linux            # partition de stockage utiliser par ceph
     la place non utiliser est garder pour le futur.
 
-## 1 ére étape : installation minimal de la machine hôte. 
+## 1 ére étape : installation commune.
+
+> sssss
+> ssss
 
 ## 2 ème étape : virtualBox et config des MVs
 

@@ -199,7 +199,21 @@ objectif :
 
 ![ceph base](Images/ceph_structure_e2.png)
 
+il nous faut un serveurs de métadonnées (ceph-mds).
 
+> ceph-deploy mds create ceph-admin
+
+rajoutons maintenantceph2 et ceph3 en moniteur pour notre cluster.
+
+> ceph-deploy mon add ceph2
+
+> ceph-deploy mon add ceph3
+
+nous pouvons rajouter la passerelle rado pour intéragir avec notre cluster.
+
+> ceph-deploy rgw create ceph-admin
+
+une fois ceci fais nous pouvons voir l'état de notre cluster.
 
 ![ceph base](Images/ceph_health_e2.png)
 

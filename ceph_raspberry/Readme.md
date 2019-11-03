@@ -32,7 +32,13 @@ Avant-propos:
 ## 1 ére étape : installation commune.
 
 > sssss
-> ssss
+scscss
+cs
+cs
+cs
+c
+sc
+
 
 ## 2 ème étape : virtualBox et config des MVs
 

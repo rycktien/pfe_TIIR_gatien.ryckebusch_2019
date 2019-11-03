@@ -175,7 +175,7 @@ il nous reste à copier les clef admin dans les autres machines.
 
 il fois la copie des clef effectuer nous allons créer 1 manager.
 
-> ceph-deploy mgr create ceph-admin 
+> ceph-deploy mgr create ceph-admin ceph2 ceph3 
 
 cette command peut nécessiter un reboot (voir plus tard)
 maintemant nous allons creer 3 osd qui nous servirons de stockage physique à nôtre cluster

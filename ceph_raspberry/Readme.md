@@ -4,6 +4,11 @@ Gatien Ryckebusch 2019-2020 étudiant université de lille
 
 Dans cette partie nous allons voir l'installation du système de fichiers ceph sur des raspberry pi 4.
 
+lien  
+		
+		https://docs.ceph.com/docs/mimic/start/quick-start-preflight/
+		https://docs.ceph.com/docs/mimic/start/quick-ceph-deploy/
+
 ## Quelques informations
 
 Réseau : 192.168.1.0/24  

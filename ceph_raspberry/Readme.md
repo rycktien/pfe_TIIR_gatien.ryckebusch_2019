@@ -140,6 +140,7 @@ objectif :
 
 
 ![ceph base](Images/ceph_health_e1.png)
+![ceph base](Images/ceph_health_e2.png)
 
 sur ceph-admin 
 

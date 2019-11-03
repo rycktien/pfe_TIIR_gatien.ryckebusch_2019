@@ -7,7 +7,7 @@ Dans ce parti nous allons nous voir l'installation du système de fichiers ceph 
 ## Quelques informations
 
 Ip du réseau : 192.168.1.0/24  
-Iso de la machine hote : 2019-09-26-raspbian-buster-lite.img  
+Iso des raspberry pi : 2019-09-26-raspbian-buster-lite.img  
 Login : pi  
 Password : raspberry  
 IP :

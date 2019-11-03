@@ -31,15 +31,12 @@ Avant-propos:
 
 ## 1 ére étape : installation commune.
 
-> sssss
+mise à jour du systéme
 
->scscss
+> sudo apt-get update -y
 
->cs
-cs
-cs
-c
-sc
+> sudo apt-get upgrade -y
+
 
 
 ## 2 ème étape : virtualBox et config des MVs

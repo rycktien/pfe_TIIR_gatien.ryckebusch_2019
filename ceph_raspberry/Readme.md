@@ -138,7 +138,8 @@ il faut laiser la phrase secrète vide.
 
 objectif :
 
-!(alt)[]
+
+![Alt text](Images/)
 
 sur ceph-admin 
 

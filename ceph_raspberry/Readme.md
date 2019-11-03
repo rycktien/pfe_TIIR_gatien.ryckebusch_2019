@@ -2,7 +2,7 @@ Gatien Ryckebusch 2019-2020 étudiant université de lille
 
 # PFE - Mise en oeuvre d'un système de fichier pair-à-pair sur raspberry pi4
 
-Dans ce parti nous allons nous voir l'installation du système de fichiers ceph sur des raspberry pi 4.
+Dans cette parti nous allons nous voir l'installation du système de fichiers ceph sur des raspberry pi 4.
 
 ## Quelques informations
 

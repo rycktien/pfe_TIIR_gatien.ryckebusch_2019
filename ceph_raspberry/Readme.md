@@ -10,18 +10,13 @@ ip réseau : 192.168.1.0/24
 iso de la machine hote : 2019-09-26-raspbian-buster-lite.img  
 login : pi  
 password : raspberry  
-  		 
-  
-IP  
+IP :
 		
 		Nom         |  adresse IP
 		ceph-admin  | 192.168.1.63
 		ceph2       | 192.168.1.71
 		ceph3       | 192.168.1.84
-    
-    
-Avant-propos: 
-    
+ Avant-propos:    
     nous avons à une carte SD de 512Go partionnée de cette maniére pour les 3 raspberry.
     Disk /dev/mmcblk0: 476.9 GiB :
         /dev/mmcblk0p1           8192    532479    524288  256M  c W95 FAT32 (LBA)  # BOOT

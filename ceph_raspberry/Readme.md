@@ -7,9 +7,9 @@ Dans cette parti nous allons nous voir l'installation du systéme de fichier cep
 ##quelques informations
 
 
-		iso de la machine hote           : 2019-09-26-raspbian-buster-lite.img
-    login:pi
-	  password:raspberry
+		iso de la machine hote : 2019-09-26-raspbian-buster-lite.img
+		login : pi
+		password : raspberry
 		
   
 IP:  
@@ -37,9 +37,53 @@ mise à jour du systéme
 
 > sudo apt-get upgrade -y
 
+installation de lvm
+
+> sudo apt-get install lvm2
+
+modification du fichier hosts 
+
+> sudo echo -e "192.168.1.63  ceph-admin\n192.168.1.71 ceph2\n192.168.1.84 ceph3" | sudo tee -a /etc/hosts
+
+ntp
+
+> sudo apt install ntpdate -y
+
+> sudo apt install ntp -y
+
+> sudo service ntp stop
+
+> sudo timedatectl  set-timezone Europe/Paris
+
+> sudo timedatactl set-ntp on
+
+> sudo ntpdate 0.fr.pool.ntp.org
+
+ssh
+
+> sudo sudo apt-get install openssh-server -y
+
+> sudo systemctl enable ssh
+
+> sudo systemctl start ssh
+
+> echo -e "Host ceph-admin\n\tHostname ceph-admin\n\tUser ceph-admin\nHost ceph2\n\tHostname ceph2\n\tUser ceph2\nHost ceph3\n\tHostname ceph3\n\tUser ceph3\n" | sudo tee -a ~/.ssh/config
+
+## 2 ème étape : configuration user et nom de machine
+
+sur ceph-amdmin user :  
+user : ceph-admin  
+password : ceph
 
 
-## 2 ème étape : virtualBox et config des MVs
+> sudo useradd ceph-admin --shell /bin/bash --create-home
+
+> sudo passwd ceph-admin
+
+> sudo addgroup ceph-admin sudo
+
+> echo "ceph-admin" ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph-admin
+
 
 ## 3 éme étape : installation du system de fichier ceph dans les MVs
 

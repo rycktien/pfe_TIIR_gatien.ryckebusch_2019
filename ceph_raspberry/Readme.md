@@ -13,6 +13,7 @@ Dans cette parti nous allons nous voir l'installation du systéme de fichier cep
 		
   
 IP:  
+		ip réseau : 192.168.1.0/24
 
 		Nom         |  adresse IP
 		ceph-admin  | 192.168.1.63
@@ -28,6 +29,7 @@ Avant-propos:
         /dev/mmcblk0p2         532480 210247679 209715200  100G 83 Linux            # / 
         /dev/mmcblk0p3      210247680 315105279 104857600   50G 83 Linux            # partition de stockage utiliser par ceph
     la place non utiliser est garder pour le futur.
+    ceph-admin nous servira de node-admin pour la gestion des clefs.
 
 ## 1 ére étape : installation commune.
 
@@ -127,7 +129,7 @@ nom de la machine
 
 ## 3 éme étape : generation des keys ssh et configuration
 
-dans ceph-admin  
+sur ceph-admin  
 il faut laiser la phrase secrète vide.
 
 > ssh-keygen
@@ -138,5 +140,57 @@ il faut laiser la phrase secrète vide.
 
 > ssh-copy-id ceph3@ceph3
 
+## 4 éme étape : mise en place d'un systéme de fichier basic ceph.
 
+objectif :
+
+!(alt)[]
+
+sur ceph-admin 
+
+> sudo apt-get install ceph-deploy -y
+
+creation du dossier pour les creation des clef et des fichiers de configuration
+
+> mkdir /cluster
+
+> cd /cluster
+
+ceph-deploy ne dois pas être lancer en sudo si  
+la commande échoue vérifier votre configuration  
+ssh et votre fichier /etc/hosts.
+
+> ceph-deploy new ceph-admin
+
+ajout du public_network (optionnel car nous avons qu'une seul interface réseaux)
+
+> echo "public_network = 192.168.1.0/24"
+
+installation de ceph et copie des fichier de configuration dans les différents machines.
+
+> ceph-deploy install ceph-admin ceph2 ceph3
+
+deployement du premier moniteur dans ceph-admin
+
+> ceph-deploy mon create-initial
+
+une fois ceci fais plusieurs keys apparaitrons dans le dossier "/cluster"  
+il nous reste à copier les clef admin dans les autres machines.
+
+> ceph-deploy admin ceph-admin ceph2 ceph3
+
+il fois la copie des clef effectuer nous allons créer 1 manager.
+
+> ceph-deploy mgr create ceph-admin 
+
+cette command peut nécessiter un reboot (voir plus tard)
+maintemant nous allons creer 3 osd qui nous servirons de stockage physique à nôtre cluster
+pour ce faire nous avons une partition de 50go dans /dev/mmcblk0p3 dans chacune de nos   
+machines comme expliquer dans l'avant propos.
+
+> ceph-deploy osd create --data /dev/mmcblk0p3 ceph2
+
+> ceph-deploy osd create --data /dev/mmcblk0p3 ceph3
+
+> ceph-deploy osd create --data /dev/mmcblk0p3 ceph-admin
 

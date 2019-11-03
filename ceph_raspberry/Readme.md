@@ -220,6 +220,6 @@ Allons vérifier l'état de notre cluster.
 
 # Sources
   
-https://docs.ceph.com/docs/mimic/start/quick-start-preflight/
+https://docs.ceph.com/docs/mimic/start/quick-start-preflight/  
 https://docs.ceph.com/docs/mimic/start/quick-ceph-deploy/
 

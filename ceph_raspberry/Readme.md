@@ -71,10 +71,12 @@ ssh
 
 ## 2 ème étape : configuration user et nom de machine
 
-sur ceph-amdmin user :  
+sur ceph-amdmin  
 user : ceph-admin  
-password : ceph
-
+password : ceph  
+  
+    
+user
 
 > sudo useradd ceph-admin --shell /bin/bash --create-home
 
@@ -84,7 +86,57 @@ password : ceph
 
 > echo "ceph-admin" ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph-admin
 
+nom de la machine
 
-## 3 éme étape : installation du system de fichier ceph dans les MVs
+> echo "ceph-admin" | sudo tee /etc/hostname
+
+
+sur ceph2 :
+user : ceph2  
+password : ceph  
+
+> sudo useradd ceph2 --shell /bin/bash --create-home
+
+> sudo passwd ceph2
+
+> sudo addgroup ceph2 sudo
+
+> echo "ceph2" ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph2
+
+nom de la machine
+
+> echo "ceph2" | sudo tee /etc/hostname
+
+
+sur ceph3 :
+user : ceph3  
+password : ceph  
+
+> sudo useradd ceph3 --shell /bin/bash --create-home
+
+> sudo passwd ceph3
+
+> sudo addgroup ceph3 sudo
+
+> echo "ceph3" ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph3
+
+nom de la machine
+
+> echo "ceph3" | sudo tee /etc/hostname
+
+
+## 3 éme étape : generation des keys ssh et configuration
+
+dans ceph-admin  
+il faut laiser la phrase secrète vide.
+
+> ssh-keygen
+
+> ssh-copy-id ceph-admin@ceph-admin
+
+> ssh-copy-id ceph2@ceph2
+
+> ssh-copy-id ceph3@ceph3
+
 
 

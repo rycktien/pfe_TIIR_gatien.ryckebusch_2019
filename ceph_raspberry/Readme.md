@@ -138,13 +138,7 @@ il faut laiser la phrase secrète vide.
 
 objectif :
 
-
-![ceph base](Images/ceph_health_e1.png)
-![ceph base](Images/ceph_health_e2.png)
 ![ceph base](Images/ceph_structure_e1.png)
-![ceph base](Images/ceph_structure_e2.png)
-
-
 
 sur ceph-admin 
 
@@ -193,4 +187,13 @@ machines comme expliquer dans l'avant propos.
 > ceph-deploy osd create --data /dev/mmcblk0p3 ceph3
 
 > ceph-deploy osd create --data /dev/mmcblk0p3 ceph-admin
+
+maintemant nous avons la base de notre systéme de fichier.  
+nous pouvons vérifier avec "sudo ceph -s" et "sudo ceph health".
+![ceph base](Images/ceph_health_e1.png)
+
+
+![ceph base](Images/ceph_health_e2.png)
+![ceph base](Images/ceph_structure_e2.png)
+
 

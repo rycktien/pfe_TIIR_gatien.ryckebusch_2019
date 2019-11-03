@@ -121,7 +121,7 @@ nom de la machine
 > echo "ceph3" | sudo tee /etc/hostname
 
 
-## 3 éme étape : generation des keys ssh et configuration
+## 3 éme étape : Géneration des keys ssh et configuration
 
 sur ceph-admin  
 il faut laiser la phrase secrète vide.
@@ -134,7 +134,7 @@ il faut laiser la phrase secrète vide.
 
 > ssh-copy-id ceph3@ceph3
 
-## 4 éme étape : mise en place d'un systéme de fichier basic ceph.
+## 4 éme étape : Mise en place d'un systéme de fichier basic ceph.
 
 objectif :
 
@@ -153,6 +153,7 @@ creation du dossier pour les creation des clef et des fichiers de configuration
 ceph-deploy ne dois pas être lancer en sudo si  
 la commande échoue vérifier votre configuration  
 ssh et votre fichier /etc/hosts.
+créaction du cluster avec comme premier moniteur ceph-admin.
 
 > ceph-deploy new ceph-admin
 
@@ -173,7 +174,7 @@ il nous reste à copier les clef admin dans les autres machines.
 
 > ceph-deploy admin ceph-admin ceph2 ceph3
 
-il fois la copie des clef effectuer nous allons créer 1 manager.
+il fois la copie des clef efféctuer, nous allons créer 3 gestionnaires (ceph-mgr).
 
 > ceph-deploy mgr create ceph-admin ceph2 ceph3 
 
@@ -192,8 +193,15 @@ maintemant nous avons la base de notre systéme de fichier.
 nous pouvons vérifier avec "sudo ceph -s" et "sudo ceph health".
 ![ceph base](Images/ceph_health_e1.png)
 
+## 4 éme étape : Amélioration du systéme de fichier ceph.
+
+objectif :  
+
+![ceph base](Images/ceph_structure_e2.png)
+
+
 
 ![ceph base](Images/ceph_health_e2.png)
-![ceph base](Images/ceph_structure_e2.png)
+
 
 

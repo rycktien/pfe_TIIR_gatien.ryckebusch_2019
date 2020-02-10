@@ -1,0 +1,35 @@
+sudo ceph osd pool application enable data rgw --yes-i-really-mean-it
+sudo ceph osd pool application enable metadata rgw --yes-i-really-mean-it
+
+sudo ceph osd pool set-quota data max_objects 10000                 
+sudo ceph osd pool set-quota metadata max_objects 10000
+
+sudo ceph osd pool set data size 1
+sudo ceph osd pool set metadata size 1
+
+-----------
+
+SET FOR DELETE POOL.
+
+echo "mon_allow_pool_delete = true" >> ceph.conf
+ceph-deploy --overwrite-conf admin ceph-admin ceph-ceph2
+reboot ceph-admin & ceph 2
+sudo ceph osd pool rm metadata metadata  --yes-i-really-really-mean-it
+
+
+----------
+
+sudo ceph fs status                                                        fs - 0 clients                                                                                       ==                                                                                                   +------+--------+-------+---------------+-------+-------+                                            | Rank | State  |  MDS  |    Activity   |  dns  |  inos |                                            +------+--------+-------+---------------+-------+-------+                                            |  0   | active | ceph2 | Reqs:    0 /s |   10  |   12  |                                            +------+--------+-------+---------------+-------+-------+                                            +----------+----------+-------+-------+                                                              |   Pool   |   type   |  used | avail |                                                              +----------+----------+-------+-------+                                                              | metadata | metadata | 2246  | 22.7G |                                                              |   data   |   data   |    0  | 22.7G |                                                              +----------+----------+-------+-------+                                                                                                                                                                   +-------------+                                                                                      | Standby MDS |                                                                                      +-------------+                                                                                      +-------------+                                                                                      MDS version: ceph version 12.2.11 (26dc3775efc7bb286a1d6d66faee0ba30ea23eee) luminous (stable) 
+
+
+
+
+sudo ceph -s                                                                           cluster:                                                                                               id:     fe8b1a32-f823-49d5-af07-3ef9c738e03c                                                         health: HEALTH_OK                                                                                                                                                                                       services:                                                                                              mon: 2 daemons, quorum ceph2,ceph-admin                                                              mgr: ceph-admin(active)                                                                              mds: fs-1/1/1 up  {0=ceph2=up:active}                                                                osd: 2 osds: 2 up, 2 in                                                                                                                                                                                 data:                                                                                                  pools:   3 pools, 90 pgs                                                                             objects: 21 objects, 2.19KiB                                                                         usage:   2.01GiB used, 48.0GiB / 50.0GiB avail                                                       pgs:     90 active+clean            
+
+
+root@ceph-admin:/ # sudo ceph-fuse -m 192.168.0.13:6789 /cephfs/                                                                                                                                          WARNING: Ceph inode numbers are 64 bits wide, and FUSE on 32-bit kernels does                                 not cope well with that situation.  Expect to crash shortly.                                                                                                                                     2019-12-08 19:16:34.271840 b4863240 -1 init, newargv = 0x5b3d3b0 newargc=9                           ceph-fuse[4862]: starting ceph client                                                                ceph-fuse[4862]: ceph mount failed with (110) Connection timed out                                   2019-12-08 19:21:34.277762 b4863240 -1 client.0 authentication failed: (110) Connection timed out
+
+
+sudo mount -t ceph 192.168.0.28:/ /cephfs                                        modprobe: FATAL: Module ceph not found in directory /lib/modules/4.19.75-v7l+                        failed to load ceph kernel module (1)                                                                mount error: ceph filesystem not supported by the system
+
+

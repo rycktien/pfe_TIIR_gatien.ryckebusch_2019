@@ -1,0 +1,349 @@
+root@ceph-admin:/cluster # sudo systemctl status ceph-mds@ceph-test
+● ceph-mds@ceph-test.service - Ceph metadata server daemon
+   Active: failed (Result: signal) since Mon 2019-12-02 08:09:06 CET; 17s ago
+   Loaded: loaded (/lib/systemd/system/ceph-mds@.service; disabled; vendor prese
+  Process: 9837 ExecStart=/usr/bin/ceph-mds -f --cluster ${CLUSTER} --id ceph-te
+ Main PID: 9837 (code=killed, signal=ABRT)
+
+Dec 02 08:09:06 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Service Resta
+Dec 02 08:09:06 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Scheduled res
+Dec 02 08:09:06 ceph-admin systemd[1]: Stopped Ceph metadata server daemon.
+Dec 02 08:09:06 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Start request
+Dec 02 08:09:06 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Failed with r
+Dec 02 08:09:06 ceph-admin systemd[1]: Failed to start Ceph metadata server daem
+Dec 02 08:09:10 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Start request
+Dec 02 08:09:10 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Failed with r
+Dec 02 08:09:10 ceph-admin systemd[1]: Failed to start Ceph metadata server daem
+...skipping...
+● ceph-mds@ceph-test.service - Ceph metadata server daemon
+   Loaded: loaded (/lib/systemd/system/ceph-mds@.service; disabled; vendor prese
+   Active: failed (Result: signal) since Mon 2019-12-02 08:09:06 CET; 17s ago
+  Process: 9837 ExecStart=/usr/bin/ceph-mds -f --cluster ${CLUSTER} --id ceph-te
+ Main PID: 9837 (code=killed, signal=ABRT)
+
+Dec 02 08:09:06 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Service Resta
+Dec 02 08:09:06 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Scheduled res
+Dec 02 08:09:06 ceph-admin systemd[1]: Stopped Ceph metadata server daemon.
+Dec 02 08:09:06 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Start request
+Dec 02 08:09:06 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Failed with r
+Dec 02 08:09:06 ceph-admin systemd[1]: Failed to start Ceph metadata server daem
+Dec 02 08:09:10 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Start request
+Dec 02 08:09:10 ceph-admin systemd[1]: ceph-mds@ceph-test.service: Failed with r
+Dec 02 08:09:10 ceph-admin systemd[1]: Failed to start Ceph metadata server daem
+~
+
+
+
+
+
+root@ceph-admin:/cluster # ceph osd pool create cephfs_data 0
+pool 'cephfs_data' created
+root@ceph-admin:/cluster # ceph osd pool create cephfs_metadata 0
+pool 'cephfs_metadata' created
+
+
+root@ceph-admin:/cluster # sudo ceph -s
+  cluster:
+    id:     74de599f-f70e-4ccb-984b-f388b6741fd0
+    health: HEALTH_WARN
+            too few PGs per OSD (16 < min 30)
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   2 pools, 16 pgs
+    objects: 0 objects, 0B
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     16 active+undersized
+
+
+
+
+root@ceph-admin:/cluster # ceph fs new cephfs cephfs_metadata cephfs_data
+new fs with metadata pool 2 and data pool 1
+root@ceph-admin:/cluster # ceph fs ls
+name: cephfs, metadata pool: cephfs_metadata, data pools: [cephfs_data ]
+root@ceph-admin:/cluster # sudo ceph -s
+
+
+
+
+
+root@ceph-admin:/cluster # sudo ceph -s
+  cluster:
+    id:     74de599f-f70e-4ccb-984b-f388b6741fd0
+    health: HEALTH_WARN
+            Degraded data redundancy: 5/15 objects degraded (33.333%), 2 pgs degraded, 16 pgs undersized
+            too few PGs per OSD (16 < min 30)
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    mds: cephfs-1/1/1 up  {0=ceph-admin=up:creating}
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   2 pools, 16 pgs
+    objects: 5 objects, 626B
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     5/15 objects degraded (33.333%)
+             14 active+undersized
+             2  active+undersized+degraded
+
+
+
+
+root@ceph-admin:/cluster # ceph mds stat
+cephfs-1/1/1 up  {0=ceph-admin=up:creating}
+
+
+
+!!!!!#  root@ceph-admin:/cluster # ceph mds stat
+!!!!!#  cephfs-1/1/1 up  {0=ceph-admin=up:#############active############}
+ 
+
+
+root@ceph-admin:/home/ceph-admin # ceph osd pool set cephfs_data pg_num 20
+set pool 1 pg_num to 20
+root@ceph-admin:/home/ceph-admin # ceph osd pool set cephfs_metadata pg_num 20
+set pool 2 pg_num to 20
+
+
+root@ceph-admin:/home/ceph-admin # ceph osd pool set cephfs_data pgp_num 20
+set pool 1 pgp_num to 20
+root@ceph-admin:/home/ceph-admin # ceph osd pool set cephfs_metadata pgp_num 20
+set pool 2 pgp_num to 20
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+root@ceph-admin:/home/ceph-admin # ceph-fuse -m ceph-admin /cephfs
+
+WARNING: Ceph inode numbers are 64 bits wide, and FUSE on 32-bit kernels does
+         not cope well with that situation.  Expect to crash shortly.
+
+2019-12-02 11:00:56.211146 b485d240 -1 init, newargv = 0x6335740 newargc=9
+ceph-fuse[11407]: starting ceph client
+ceph-fuse[11407]: probably no MDS server is up?
+ceph-fuse[11407]: ceph mount failed with (65536) Unknown error 65536
+
+
+
+
+------------
+
+
+
+
+
+ceph-admin@ceph-admin:/cluster $ sudo ceph osd pool create data 32
+pool 'data' created
+ceph-admin@ceph-admin:/cluster $ sudo ceph osd pool create metadata 32
+pool 'metadata' created
+
+
+ceph-admin@ceph-admin:/cluster $ sudo ceph -s
+  cluster:
+    id:     fe8b1a32-f823-49d5-af07-3ef9c738e03c
+    health: HEALTH_OK
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   2 pools, 64 pgs
+    objects: 0 objects, 0B
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     64 active+undersized
+
+
+ceph-admin@ceph-admin:/cluster $ sudo ceph fs new fs metadata data
+new fs with metadata pool 2 and data pool 1
+
+
+ceph-admin@ceph-admin:/cluster $ sudo ceph -s
+  cluster:
+    id:     fe8b1a32-f823-49d5-af07-3ef9c738e03c
+    health: HEALTH_WARN
+            Degraded data redundancy: 8/24 objects degraded (33.333%), 5 pgs degraded, 64 pgs undersized
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    mds: fs-1/1/1 up  {0=ceph-admin=up:creating}
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   2 pools, 64 pgs
+    objects: 8 objects, 648B
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     8/24 objects degraded (33.333%)
+             59 active+undersized
+             5  active+undersized+degraded
+
+
+
+ceph-admin@ceph-admin:/cluster $ sudo ceph osd pool set data size 1
+set pool 1 size to 1
+ceph-admin@ceph-admin:/cluster $ sudo ceph osd pool set metadata size 1
+set pool 2 size to 1
+
+
+
+
+ceph-admin@ceph-admin:/cluster $ sudo ceph -s
+  cluster:
+    id:     fe8b1a32-f823-49d5-af07-3ef9c738e03c
+    health: HEALTH_WARN
+            1 MDSs report slow metadata IOs
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    mds: fs-1/1/1 up  {0=ceph-admin=up:creating}
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   2 pools, 64 pgs
+    objects: 8 objects, 648B
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     64 active+clean
+
+
+
+ceph2@ceph2:~ $ sudo ceph osd pool set data size 2
+set pool 2 size to 2
+ceph2@ceph2:~ $ sudo ceph osd pool set metadata size 2
+set pool 2 size to 2
+
+
+
+ceph-admin@ceph-admin:/cluster $ sudo ceph -s
+  cluster:
+    id:     fe8b1a32-f823-49d5-af07-3ef9c738e03c
+    health: HEALTH_WARN
+            1 MDSs report slow metadata IOs
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    mds: fs-1/1/1 up  {0=ceph-admin=up:creating}
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   2 pools, 64 pgs
+    objects: 8 objects, 648B
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     64 active+clean
+ 
+
+
+ceph-deploy rgw create ceph-admin
+ceph2@ceph2:~ $ sudo ceph osd pool set .rgw.root size 2
+
+--  - - -- -- - - 
+
+root@ceph-admin:/cluster # sudo ceph -s
+  cluster:
+    id:     fe8b1a32-f823-49d5-af07-3ef9c738e03c
+    health: HEALTH_WARN
+            1 MDSs report slow metadata IOs
+            Reduced data availability: 2 pgs inactive, 72 pgs peering
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    mds: fs-1/1/1 up  {0=ceph-admin=up:active}
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   3 pools, 72 pgs
+    objects: 9 objects, 1.50KiB
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     100.000% pgs not active
+             72 peering
+ 
+
+
+
+ceph2@ceph2:~ $ sudo ceph -s
+  cluster:
+    id:     fe8b1a32-f823-49d5-af07-3ef9c738e03c
+    health: HEALTH_WARN
+            1 MDSs report slow metadata IOs
+            Reduced data availability: 72 pgs inactive, 72 pgs peering
+            6 slow requests are blocked > 32 sec. Implicated osds 1
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    mds: fs-1/1/1 up  {0=ceph-admin=up:active}
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   3 pools, 72 pgs
+    objects: 9 objects, 1.50KiB
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     100.000% pgs not active
+             72 peering
+
+
+
+
+root@ceph-admin:/cluster # sudo ceph-fuse /mnt/cephfs/ --client_mds_namespace fs
+ 
+WARNING: Ceph inode numbers are 64 bits wide, and FUSE on 32-bit kernels does
+         not cope well with that situation.  Expect to crash shortly.
+
+2019-12-03 11:34:24.598664 b48be240 -1 init, newargv = 0x5e4d3e0 newargc=9
+ceph-fuse[3576]: starting ceph client
+ceph-fuse[3576]: ceph mount failed with (110) Connection timed out
+
+
+
+
+ceph2@ceph2:~ $ sudo ceph -s
+  cluster:
+    id:     fe8b1a32-f823-49d5-af07-3ef9c738e03c
+    health: HEALTH_WARN
+            1 MDSs report slow metadata IOs
+            Reduced data availability: 72 pgs inactive, 72 pgs peering
+            6 slow requests are blocked > 32 sec. Implicated osds 1
+ 
+  services:
+    mon: 2 daemons, quorum ceph2,ceph-admin
+    mgr: ceph-admin(active)
+    mds: fs-1/1/1 up  {0=ceph-admin=up:active}
+    osd: 2 osds: 2 up, 2 in
+ 
+  data:
+    pools:   3 pools, 72 pgs
+    objects: 9 objects, 1.50KiB
+    usage:   2.00GiB used, 48.0GiB / 50.0GiB avail
+    pgs:     100.000% pgs not active
+             72 peering
+
+
+###### 
+
+sudo ceph-fuse --id admin -k /cluster/ceph.client.admin.keyring -m 192.168.0.28:6789 -r / --client_mds_namespace fs /cephfs
+
+
+#######
+## 
+https://docs.ceph.com/docs/luminous/rados/troubleshooting/
+https://docs.ceph.com/docs/luminous/cephfs/troubleshooting/
+
+
+
+https://lists.ceph.io/hyperkitty/list/ceph-users@ceph.io/message/4Z5T6FTYNTH3Q6YCLAF5VHH73OCQRM76/
+
+

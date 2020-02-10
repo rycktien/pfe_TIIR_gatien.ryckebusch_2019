@@ -1,0 +1,11 @@
+ceph-admin@ceph-admin:~ $ sudo ceph-fuse -m 192.168.0.28:6789 /cephfs
+WARNING: Ceph inode numbers are 64 bits wide, and FUSE on 32-bit kernels does
+         not cope well with that situation.  Expect to crash shortly.
+
+2019-11-25 15:19:21.670271 b4865240 -1 init, newargv = 0x6a7f3b0 newargc=9
+ceph-fuse[5710]: starting ceph client
+
+
+
+DON'T DO IT! I spent several hours setting up three virtual servers - one master and two nodes - to run ceph. When it finally came time to run the cfuse command, I saw this message: WARNING: Ceph inode numbers are 64 bits wide, and FUSE on 32-but kernals does not cope well with that situation. Expect to crash shortly. Sigh.
+
